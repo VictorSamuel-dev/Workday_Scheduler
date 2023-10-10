@@ -1,23 +1,85 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+$(document).ready(function () {
+  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+  // The object that stores tasks as strings and retrieves them from 
+  // local storage
+  var tasksObj = JSON.parse(localStorage.getItem("tasksObj")) || {
+      "9": "",
+      "10": "",
+      "11": "",
+      "12": "",
+      "13": "",
+      "14": "",
+      "15": "",
+      "16": "",
+      "17": ""
+  };
+
+  // This forloop retrives the tasks from the object and returns them to 
+  // textarea on refresh of the page
+  for (var i = 0; i < 9; i++) {
+      console.log(tasksObj[i + 9]);
+      console.log($(`#${i + 9}`).find(".description").text(loadTxt));
+      var loadTxt = tasksObj[i + 9];
+      $(`#${i + 9}`).find(".description").text(loadTxt);
+  };
+
+  // Time gathered from moment.js
+  var currentDay = $("#currentDay");
+
+  currentDay.text(moment().format('dddd, MMMM Do YYYY'));
+
+  var currentHour = parseInt(moment().format('H'));
+
+  console.log(currentHour);
+
+  // Stores tasks to local storage
+  function storeTasks() {
+      localStorage.setItem("tasksObj", JSON.stringify(tasksObj));
+  };
+
+  // This function styles the rows according to the time
+  function styleTasks() {
+
+      $(".row-info").each(function () {
+          var elementHour = parseInt(($(this).attr("id")));
+          
+          if (elementHour < currentHour) {
+              $(this).addClass("past");
+          }
+          else if (elementHour === currentHour) {
+              $(this).addClass("present");
+          }
+          else {
+              $(this).addClass("future");
+
+          };
+      });
+  };
+
+
+  console.log(tasksObj);
+
+  // Click event to populate the tasksObj with text input from the textarea 
+  $("button").on("click", function () {
+      // get id
+      console.log($(this).parent().attr("id"));
+      var taskId = $(this).parent().attr("id");
+
+      // get textarea input
+      var textInput = $(this).parent().find("textarea");
+      textInput.val();
+      console.log(textInput.val());
+
+      // populate the obj in the background
+      console.log("my tasks: ", tasksObj);
+
+      tasksObj[taskId] = textInput.val();
+
+      // trigger a save function 
+      storeTasks();
+  });
+
+  styleTasks();
+
 });

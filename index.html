@@ -20,46 +20,100 @@
   </head>
 
   <body>
-    <header class="p-5 mb-4 border-5 border-bottom border-dark text-center">
+    <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p class="lead">A simple calender app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container-lg px-5">
-      <!-- Use class for "past", "present", and "future" to apply styles to the
-        time-block divs accordingly. The javascript will need to do this by
-        adding/removing these classes on each div by comparing the hour in the
-        id to the current hour. The html provided below is meant to be an example
-        demonstrating how the css provided can be leveraged to create the
-        desired layout and colors. The html below should be removed or updated
-        in the finished product. Remember to delete this comment once the
-        code is implemented.
-        -->
 
-      <!-- Example of a past time block. The "past" class adds a gray background color. -->
-      <div id="hour-9" class="row time-block past">
-        <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
+    <div class="container">
+
+      <div id="9" class="row time-block past">
+        <div class="col-md-1 hour">9:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+      </div>
+      <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+        <i class="bi bi-calendar-plus">Save</i>
+      </button>
+        <!-- 10:00 -->
+      <div id="10" class="row time-block past">
+        <div class="col-md-1 hour">10:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus">Save</i>
+      </button>
+      </div>
+        <!-- 11 -->
+      <div id="11" class="row time-block past">
+      <div class="col-md-1 hour">11:00</div>
+      <div class="col task">
+        <textarea class="description"></textarea>
+      </div>
+      <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus">Save</i>
+      </button>
+      </div>
+        <!-- 12 -->
+      <div id="12" class="row row-info present">
+        <div class="col-md-1 hour">12:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus">Save</i>
         </button>
       </div>
-
-      <!-- Example of a a present time block. The "present" class adds a red background color. -->
-      <div id="hour-10" class="row time-block present">
-        <div class="col-2 col-md-1 hour text-center py-3">10AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
+        <!-- 1 -->
+      <div id="13" class="row row-info future">
+        <div class="col-md-1 hour">1:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus">Save</i>
         </button>
       </div>
-
-      <!-- Example of a future time block. The "future" class adds a green background color. -->
-      <div id="hour-11" class="row time-block future">
-        <div class="col-2 col-md-1 hour text-center py-3">11AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
+        <!-- 2 -->
+      <div id="14" class="row row-info future">
+        <div class="col-md-1 hour">2:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus">Save</i>
+        </button>
+      </div>
+        <!-- 3 -->
+      <div id="15" class="row row-info future">
+        <div class="col-md-1 hour">3:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus"></i>
+        </button>
+      </div>
+        <!-- 4 -->
+      <div id="16" class="row row-info future">
+        <div class="col-md-1 hour">4:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus"></i>
+        </button>
+      </div>
+        <!-- 5 -->
+      <div id="17" class="row row-info future">
+        <div class="col-md-1 hour">5:00</div>
+        <div class="col task">
+          <textarea class="description"></textarea>
+        </div>
+        <button class="col-md-1 saveBtn d-flex justify-content-center align-items-center">
+          <i class="bi bi-calendar-plus"></i>
         </button>
       </div>
 
