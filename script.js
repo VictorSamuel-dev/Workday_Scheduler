@@ -1,13 +1,7 @@
-$(function() {
-  var d = moment(dateString,"MMMM Do YYYY, h:mm a").toDate();
-    console.log(d.toISOString());
-  });
-// var today = moment();
+var today = dayjs();
+$('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
 var timeBlockEl = document.querySelector('.container');
-
-
-$('#currentDay').moment(today.format('dddd')); 
 
 $('.saveBtn').on('click', function () {
  
