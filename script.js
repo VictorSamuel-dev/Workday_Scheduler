@@ -1,3 +1,7 @@
+// const dayjs = require("dayjs");
+// dayjs('#currentDay').format('dddd, MMMM D YYYY, h:mm:ss A')
+
+
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
@@ -51,7 +55,7 @@ function auditTask() {
 
 function auditTask() {
 
-  var currentHour = today.hours();
+  // var currentHour = today.hours();
 
 
   $('.row-detail').each(function () {
@@ -73,7 +77,7 @@ function auditTask() {
   });
 }
 
-auditTask();
+// auditTask();
 
 setTimeout(function () {
   
