@@ -17,8 +17,8 @@ Created a schedule for workday hours (between 9 AM and 5pm) that allows users to
 
 ## Screenshot
 
-*[Front-Page](./assets/images/Front%20Page.png)*
-*[Saving Task](./assets/images/Task%20Saving%20Mechanisim.png)*
+- [Front-Page](./assets/images/Front%20Page.png)
+- [Saving Task](./assets/images/Task%20Saving%20Mechanisim.png)
 
 ## Deployed
 
