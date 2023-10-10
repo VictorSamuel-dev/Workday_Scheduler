@@ -21,5 +21,7 @@ Created a schedule for workday hours (between 9 AM and 5pm) that allows users to
 - [Saving Task](./assets/images/Task%20Saving%20Mechanisim.png)
 
 ## Deployed
-
 *()*
+
+## Demo
+*(https://www.loom.com/share/551afee298614402b72c3ac27441b06a?sid=cb609df8-1bdc-481a-85bc-97248b70014a)*
