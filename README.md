@@ -6,14 +6,14 @@ Created a schedule for workday hours (between 9 AM and 5pm) that allows users to
 
 ## Built With
 
-HTML
-CSS
-JavaScript
-BootStrap
-jQuery
-moments.js
-FontAwesome
-Google Fonts
+- HTML
+- CSS
+- JavaScript
+- BootStrap
+- jQuery
+- moments.js
+- FontAwesome
+- Google Fonts
 
 ## Screenshot
 
