@@ -1,85 +1,59 @@
-$(document).ready(function () {
-  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+var today = moment();
 
-  // The object that stores tasks as strings and retrieves them from 
-  // local storage
-  var tasksObj = JSON.parse(localStorage.getItem("tasksObj")) || {
-      "9": "",
-      "10": "",
-      "11": "",
-      "12": "",
-      "13": "",
-      "14": "",
-      "15": "",
-      "16": "",
-      "17": ""
-  };
-
-  // This forloop retrives the tasks from the object and returns them to 
-  // textarea on refresh of the page
-  for (var i = 0; i < 9; i++) {
-      console.log(tasksObj[i + 9]);
-      console.log($(`#${i + 9}`).find(".description").text(loadTxt));
-      var loadTxt = tasksObj[i + 9];
-      $(`#${i + 9}`).find(".description").text(loadTxt);
-  };
-
-  // Time gathered from moment.js
-  var currentDay = $("#currentDay");
-
-  currentDay.text(moment().format('dddd, MMMM Do YYYY'));
-
-  var currentHour = parseInt(moment().format('H'));
-
-  console.log(currentHour);
-
-  // Stores tasks to local storage
-  function storeTasks() {
-      localStorage.setItem("tasksObj", JSON.stringify(tasksObj));
-  };
-
-  // This function styles the rows according to the time
-  function styleTasks() {
-
-      $(".row-info").each(function () {
-          var elementHour = parseInt(($(this).attr("id")));
-          
-          if (elementHour < currentHour) {
-              $(this).addClass("past");
-          }
-          else if (elementHour === currentHour) {
-              $(this).addClass("present");
-          }
-          else {
-              $(this).addClass("future");
-
-          };
-      });
-  };
+var timeBlockEl = document.querySelector('.container');
 
 
-  console.log(tasksObj);
+$('#currentDay').text(today.format('LLLL')); 
 
-  // Click event to populate the tasksObj with text input from the textarea 
-  $("button").on("click", function () {
-      // get id
-      console.log($(this).parent().attr("id"));
-      var taskId = $(this).parent().attr("id");
+$('.saveBtn').on('click', function () {
+ 
+  var textValue = $(this).siblings('.description').val();
+ 
+  var timeKey = $(this).parent().attr('id');
 
-      // get textarea input
-      var textInput = $(this).parent().find("textarea");
-      textInput.val();
-      console.log(textInput.val());
-
-      // populate the obj in the background
-      console.log("my tasks: ", tasksObj);
-
-      tasksObj[taskId] = textInput.val();
-
-      // trigger a save function 
-      storeTasks();
-  });
-
-  styleTasks();
-
+  // save in local storage
+  localStorage.setItem(timeKey, textValue);
 });
+
+// Get item from local storage if any
+$('#hour-9 .description').val(localStorage.getItem('hour-9'));
+$('#hour-10 .description').val(localStorage.getItem('hour-10'));
+$('#hour-11 .description').val(localStorage.getItem('hour-11'));
+$('#hour-12 .description').val(localStorage.getItem('hour-12'));
+$('#hour-13 .description').val(localStorage.getItem('hour-13'));
+$('#hour-14 .description').val(localStorage.getItem('hour-14'));
+$('#hour-15 .description').val(localStorage.getItem('hour-15'));
+$('#hour-16 .description').val(localStorage.getItem('hour-16'));
+$('#hour-17 .description').val(localStorage.getItem('hour-17'));
+
+// Function to track tasks and make them change colors if they are in the past, present or future
+function auditTask() {
+
+  var currentHour = today.hours();
+
+
+  $('.time-block').each(function () {
+    var timeId = parseInt($(this).attr('id').split("hour")[1]);
+
+    if (timeId < currentHour) {
+      $(this).addClass('past');
+    } 
+      else if (timeId === currentHour) {
+      $(this).removeClass('past');
+      $(this).removeClass('future');
+      $(this).addClass('present');
+    } else {
+      $(this).removeClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('future');
+    }
+  });
+}
+
+
+auditTask();
+
+setTimeout(function () {
+  
+  location = '';
+}, 1000 * 60);
