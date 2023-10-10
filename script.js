@@ -1,9 +1,13 @@
-var today = moment();
+$(function() {
+  var d = moment(dateString,"MMMM Do YYYY, h:mm a").toDate();
+    console.log(d.toISOString());
+  });
+// var today = moment();
 
 var timeBlockEl = document.querySelector('.container');
 
 
-$('#currentDay').text(today.format('LLLL')); 
+$('#currentDay').moment(today.format('dddd')); 
 
 $('.saveBtn').on('click', function () {
  
@@ -38,11 +42,12 @@ function auditTask() {
     if (timeId < currentHour) {
       $(this).addClass('past');
     } 
-      else if (timeId === currentHour) {
+    else if (timeId === currentHour) {
       $(this).removeClass('past');
       $(this).removeClass('future');
       $(this).addClass('present');
-    } else {
+    } 
+    else {
       $(this).removeClass('past');
       $(this).removeClass('present');
       $(this).addClass('future');
@@ -50,6 +55,29 @@ function auditTask() {
   });
 }
 
+function auditTask() {
+
+  var currentHour = today.hours();
+
+
+  $('.row-detail').each(function () {
+    var timeId = parseInt($(this).attr('id').split("hour")[1]);
+
+    if (timeId < currentHour) {
+      $(this).addClass('past');
+    } 
+    else if (timeId === currentHour) {
+      $(this).removeClass('past');
+      $(this).removeClass('future');
+      $(this).addClass('present');
+    } 
+    else {
+      $(this).removeClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('future');
+    }
+  });
+}
 
 auditTask();
 
